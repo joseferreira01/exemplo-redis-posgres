@@ -5,17 +5,14 @@
  */
 package br.edu.ifpb.redis.dao;
 
-import java.sql.Connection;
-import java.sql.SQLException;
+import redis.clients.jedis.Jedis;
 
 /**
  *
  * @author jose
  */
-public interface ConectionJDBC {
-
-    void fecharConexao(Connection c) throws SQLException;
-
-    Connection init();
-    
+public class ConectionRedis {
+    public Jedis init(){
+        return  new Jedis("localhost");
+    }
 }

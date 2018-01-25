@@ -56,12 +56,12 @@ public class Pedido {
         this.itemPedidos = itemPedidos;
     }
 
-    public Produto convertGsonToPedido(String uGson) {
+    public static Pedido convertGsonToPedido(String uGson) {
         Gson gson = new Gson();
-        return gson.fromJson(uGson, Produto.class);
+        return gson.fromJson(uGson, Pedido.class);
     }
 
-    public String convertpedidoToGson() {
+    public  String convertpedidoToGson() {
 
         Gson gson = new Gson();
 

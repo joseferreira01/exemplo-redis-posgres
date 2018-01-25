@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  *
  * @author jose
  */
-public class Conexao implements Conection {
+public class Conexao implements ConectionJDBC {
       private static Properties prop = null;
 
     private Connection connection;

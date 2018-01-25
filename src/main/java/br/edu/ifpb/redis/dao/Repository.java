@@ -14,18 +14,11 @@ import java.util.List;
 public interface Repository<T> {
 
     int salvar(T entity);
-
-//    void atualizar(T entity);
-//
-//    void deletar(int chavePrimaria);
-///**
-// * 
-// * @param atributo  Nome do atributo referente a busca 
-// * @param valor valor do atributo referenciado
-// * @return Retorna um objeto cuje o atributo for encontrado
-// */
+/**
+ * @param atributo  Nome do atributo referente a busca 
+ * @param valor valor do atributo referenciado
+ * @return Retorna um objeto cuje o atributo for encontrado
+ */
     T buscar(String atributo, Object valor);
-//
-//    List<T> buscarTodos();
 
 }

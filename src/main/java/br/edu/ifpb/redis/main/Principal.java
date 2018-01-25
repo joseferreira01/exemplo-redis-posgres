@@ -6,6 +6,7 @@
 package br.edu.ifpb.redis.main;
 
 import br.edu.ifpb.redis.dao.DAOPedido;
+import br.edu.ifpb.redis.dao.DAOPedidoRedis;
 import br.edu.ifpb.redis.entity.Pedido;
 import java.time.LocalDate;
 
@@ -15,20 +16,38 @@ import java.time.LocalDate;
  */
 public class Principal {
 
+    private static DAOPedidoRedis DAOedis = new DAOPedidoRedis();
+
     private static DAOPedido dAOPedido = new DAOPedido();
 
     public static void main(String[] args) {
-        Pedido pedido = new Pedido(LocalDate.now(), 2);
-      //  salvarPedido(pedido);
-        System.err.println("BUSCAR " + buscarPedidos());
+        Pedido pedido = new Pedido(7,LocalDate.now(), 2);
+        //  salvarPedido(pedido);
+        // System.err.println("BUSCAR " + buscarPedidos());
+        //System.err.println("BUSCAR " + buscarPedidos(2));
+       // salvarPedido(pedido);
+        //System.err.println("redis " +DAOedis.buscar("5"));
+       //  salvarPedido(pedido);
+          System.err.println("redis " +DAOedis.buscar("7"));
     }
 
     private static void salvarPedido(Pedido pedido) {
-        System.err.println("pedido salvo" + dAOPedido.salvar(pedido));
+        if (dAOPedido.salvar(pedido) == 1) {
+            System.err.println("pedido salvo" + DAOedis.salvar(pedido));
+        }
     }
 
-    private static Pedido buscarPedidos() {
-        return dAOPedido.buscar("codigo", 2);
+    private static Pedido buscarPedidos(int id) {
+        Pedido resultado = DAOedis.buscar(String.valueOf(id));
+        if (resultado == null) {
+            System.err.println("d if");
+            return dAOPedido.buscar("codigo", id);
+            
+        } else {
+             System.err.println("s ig");
+            return resultado;
+           
+        }
     }
 
 }
