@@ -44,7 +44,7 @@ public class DAOPedidoRedis  {
          redis = conn.init();
        
         String set;
-        set = redis.setex(String.valueOf(entity.getCodigo()), 45,
+        set = redis.setex(String.valueOf(entity.getCodigo()), 300,
                 entity.convertpedidoToGson());
         return set;
     }
